@@ -1,0 +1,30 @@
+.products {
+  display: flex;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid lightgray;
+}
+.products-image {
+  margin-top: 5px;
+  margin-left: 5px;
+  padding-left: 2px;
+}
+.products-name {
+  margin-top: 5px;
+  margin-left: 5px;
+  padding-left: 2px;
+  color: blue;
+}
+.price-tag {
+  color: red;
+  font-size: medium;
+  font-style: bold;
+}
+.main-button {
+  background-color: goldenrod;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  font-size: 15px;
+  color: rgb(43, 40, 40);
+  cursor: pointer;
+}
