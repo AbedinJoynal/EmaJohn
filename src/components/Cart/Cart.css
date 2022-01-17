@@ -1,0 +1,7 @@
+.reveiw-button{
+  color: rgb(0, 0, 0);
+  background-color: goldenrod;
+  border-radius: 4px;
+  border-color: rgb(224, 189, 32);
+  cursor: pointer;
+}

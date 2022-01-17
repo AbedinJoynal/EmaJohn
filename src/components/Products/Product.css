@@ -13,7 +13,7 @@
   margin-top: 5px;
   margin-left: 5px;
   padding-left: 2px;
-  color: blue;
+  color: rgb(11, 11, 94);
 }
 .price-tag {
   color: red;
@@ -21,10 +21,13 @@
   font-style: bold;
 }
 .main-button {
+  color: rgb(0, 0, 0);
   background-color: goldenrod;
-  border: 1.5px solid black;
-  border-radius: 5px;
-  font-size: 15px;
-  color: rgb(43, 40, 40);
+  border-radius: 4px;
+  border-color: rgb(224, 189, 32);
   cursor: pointer;
+}
+.main-button:hover{
+box-shadow:2px 3px rgb(216, 172, 29);
+color: white;
 }

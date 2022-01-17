@@ -6,12 +6,12 @@ const Header = () => {
     <div className="Header">
       <img src={logo} alt=""/>
       <nav>
-        <a href="Shop">Shop</a>
-        <a href="Products">Products</a>
-        <a href="Inventory">Inventory</a>
+        <a href="/shop">Shop</a>
+        <a href="/review">Order Review</a>
+        <a href="/inventory">Inventory</a>
       </nav>
     </div>
   );
 };
 
-export default Header;
+export default Header;  
