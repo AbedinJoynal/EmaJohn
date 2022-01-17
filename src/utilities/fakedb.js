@@ -42,7 +42,7 @@ const clearTheCart = () => {
 
 export {
   addToDb,
-  removeFromDb as deleteFromDb,
+  removeFromDb,
   clearTheCart,
   getDb,
   getStoredCart,
