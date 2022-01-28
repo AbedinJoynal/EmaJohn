@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Inventory from './components/Inventory/Inventory';
+import Login from './components/Login/Login';
 import Notfound from './components/Notfound/Notfound';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Review from './components/Review/Review';
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/product/:productKey">
             <ProductDetails></ProductDetails>
+          </Route>
+          <Route path="/login">
+            <Login></Login>
           </Route>
           <Route path="*">
             <Notfound></Notfound>
