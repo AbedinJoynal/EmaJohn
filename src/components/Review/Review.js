@@ -5,8 +5,11 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 import { removeFromDb } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import happyimage from '../../images/giphy.gif';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../Login/useAuth';
 const Review = () => {
   const [cart, setCart] = useState([]);
+  const auth = useAuth();
   const [orderPlaced, setOrderplaced] = useState(false);
   const handlePlaceOrder = () => {
     setCart([]);
@@ -46,9 +49,13 @@ const Review = () => {
       </div>
       <div>
         <Cart cart={cart}>
-          <button onClick={handlePlaceOrder} className="main-button">
-            Place Order
-          </button>
+          <Link to="/shipment">
+            {auth.user ? (
+              <button className="main-button">Proceed to shipment</button>
+            ) : (
+              <button className="main-button">Login to Proceed</button>
+            )}
+          </Link>
         </Cart>
       </div>
     </div>

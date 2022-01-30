@@ -1,16 +1,21 @@
 import React from 'react';
-import Auths from './use-auth';
+import Auths from './useAuth';
 const Login = () => {
   const Authentications = Auths();
-  console.log(Authentications.user)
+  console.log(Authentications.user);
+  const handleSignIn=()=> {
+    Authentications.signInWithGoogle().then((res)=>{
+      console.log("redirect User");
+    })
+  }
   return (
     <div>
-     <h1>Login Page </h1> 
-     { 
-      Authentications.user? <button>Sign Out</button>:
-      <button onClick={Authentications.signInWithGoogle}>Sign In</button>
-     }
-     
+      <h1>Login Page </h1>
+      {Authentications.user ? (
+        <button className="main-button" onClick={Authentications.signOutWithGoogle}>Sign Out</button>
+      ) : (
+        <button className="main-button" onClick={handleSignIn}>Sign In</button>
+      )}
     </div>
   );
 };
