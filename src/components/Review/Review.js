@@ -46,6 +46,9 @@ const Review = () => {
           ></ReviewItem>
         ))}
         {thankyou}
+        { 
+          !cart.length && <h2>You have not added anything Yet.  <a href="/">Keep Shopping? </a> </h2>
+        }
       </div>
       <div>
         <Cart cart={cart}>

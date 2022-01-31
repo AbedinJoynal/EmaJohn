@@ -64,7 +64,7 @@ const Auths = () => {
   const signOutWithGoogle = () => {
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
-    signOut(auth, provider)
+   return signOut(auth, provider)
       .then((res) => {
         setUser(null);
       })
