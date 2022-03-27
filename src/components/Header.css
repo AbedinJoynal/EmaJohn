@@ -1,5 +1,8 @@
 .Header img {
   height: 70px;
+  position: relative;
+  left:-1%;
+
 }
 .Header {
   text-align: center;
