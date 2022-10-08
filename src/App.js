@@ -5,6 +5,7 @@ import './App.css';
 import Home from './components/Home/Home';
 import OrderReview from './components/OrderReview/OrderReview';
 import NotFound from './components/NotFound/NotFound';
+import ManageInventory from './components/ManageInventory/ManageInventory';
 
 class App extends Component {
     render() {
@@ -15,6 +16,7 @@ class App extends Component {
                         <Route exact path="/" component={Home}></Route>
                         <Route path="/shop" component={Home}></Route>
                         <Route path="/review" component={OrderReview}></Route>
+                        <Route path="/manage" component={ManageInventory}></Route>
                         <Route path="*" component={NotFound}></Route>
                     </Switch>
                 </Router>
