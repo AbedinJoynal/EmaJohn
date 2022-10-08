@@ -1,41 +1,67 @@
-import React from 'react';
-import { useAuth } from '../Login/useAuth';
-
+import React, { Component } from 'react';
 import './Cart.css';
 
-const Cart = (props) => {
-  const auth= useAuth();
-  console.log(auth.user)
-  const cart = props.cart;
-  const total = cart.reduce(
-    (total, prod) => total + prod.price * prod.quantity,
-    0
-  );
+class Cart extends Component {
+    constructor() {
+        super();
+        this.price = 0;
+        this.shipping = 0;
+        this.beforeTax = 0;
+        this.tax = 0;
+        this.total = 0;
+    }
+    calculateCost() {
+        var itemPrice = this.props.cart.reduce((prev, item) => item.price * (item.quantity || 1) + prev, 0);
+        
+        var shippingPrice = this.props.cart.reduce((prev, item) => item.shipping * (item.quantity || 1) + prev, 0);
 
-  let shipping = 0;
-  if (total > 35) {
-    shipping = 0;
-  } else if (total > 15) {
-    shipping = 4.99;
-  } else if (total > 0) {
-    shipping = 12.99;
-  }
-  const tax = total / 10;
+        this.price = this.roundTwoDecimal(itemPrice);
+        this.shipping = this.roundTwoDecimal(shippingPrice);
+        this.tax = this.roundTwoDecimal((this.price + this.shipping) * 0.1);
+        this.beforeTax = this.roundTwoDecimal(this.price + this.shipping);
+        this.total = this.roundTwoDecimal(this.price + this.shipping + this.tax);
+    }
 
-  return (
-    <div>
-      <h4>Order Summary</h4>
+    roundTwoDecimal(number) {
+        return (Math.round(number * 100) / 100);
+    }
 
-      <h5>Items Ordered : {cart.length}</h5>
-      <h5>Price : {total}</h5>
-      <h5>Shipping : {shipping}</h5>
-      <h5>Tax included : {tax}</h5>
-      <h5>Total Price : {total + shipping + tax}</h5>
-      <br />
-      {props.children}
-      <p>{}</p>
-    </div>
-  );
-};
+    render() {
+        const cart = this.props.cart;
+        this.calculateCost();
+        return (
+            <div className="cart">
+                <h3>Order Summary</h3>
+                <p>Items ordered:{cart.length}</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Items:</td>
+                            <td>${this.price}</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping & Handling:</td>
+                            <td>${this.shipping}</td>
+                        </tr>
+                        <tr>
+                            <td>Total before tax:</td>
+                            <td>${this.beforeTax}</td>
+                        </tr>
+                        <tr>
+                            <td>Estimated Tax:</td>
+                            <td>${this.tax}</td>
+                        </tr>
+                        <tr className="total-row">
+                            <td>Order Total:</td>
+                            <td>${this.total}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                {this.props.children}
+            </div>
+        );
+    }
+}
+
 
 export default Cart;

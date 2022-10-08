@@ -11,6 +11,7 @@ var shippingCost = [
         type: 'Regular',
         isSelected:false
     },
+    
     {
         price: 7.99,
         days: '2-4',

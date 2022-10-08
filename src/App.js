@@ -1,55 +1,26 @@
-import { createContext } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header/Header';
-import Inventory from './components/Inventory/Inventory';
-import Login from './components/Login/Login';
-import { AuthContextProvider } from './components/Login/useAuth';
-import Notfound from './components/Notfound/Notfound';
-import ProductDetails from './components/ProductDetails/ProductDetails';
-import Review from './components/Review/Review';
-import Shop from './components/shop/Shop';
-import Shipment from './components/Shipment/Shipment';
-import {PrivateRoute} from './components/Login/useAuth';
-export const UserContext = createContext();
-function App(props) {
-  const user = { name: 'LoggedUser', email: 'Logged@User.com' };
-  return (
-    <div>
-      <AuthContextProvider>
-        <Header></Header>
-        <Router>
-          <Switch>
-            <Route path="/shop">
-              <Shop></Shop>
-            </Route>
-            <Route path="/review">
-              <Review></Review>
-            </Route>
-            <Route path="/inventory">
-              <Inventory></Inventory>
-            </Route>
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-            <Route exact path="/">
-              <Shop></Shop>
-            </Route>
-            <Route path="/product/:productKey">
-              <ProductDetails></ProductDetails>
-            </Route>
-            <Route path="/login">
-              <Login></Login>
-            </Route>
-            <PrivateRoute path="/shipment">
-              <Shipment></Shipment>
-            </PrivateRoute>
-            <Route path="*">
-              <Notfound></Notfound>
-            </Route>
-          </Switch>
-        </Router>
-      </AuthContextProvider>
-    </div>
-  );
+import './App.css';
+import Home from './components/Home/Home';
+import OrderReview from './components/OrderReview/OrderReview';
+import NotFound from './components/NotFound/NotFound';
+
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={Home}></Route>
+                        <Route path="/shop" component={Home}></Route>
+                        <Route path="/review" component={OrderReview}></Route>
+                        <Route path="*" component={NotFound}></Route>
+                    </Switch>
+                </Router>
+            </div>
+        );
+    }
 }
 
 export default App;

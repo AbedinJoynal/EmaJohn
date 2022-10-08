@@ -1,29 +1,29 @@
-import React from 'react';
-import logo from '../../images/kinbo.png';
-import '../Header.css';
-import { useAuth } from '../Login/useAuth';
+import React, { Component } from 'react';
+import logo from '../../images/logo.png';
+import './Header.css';
 
-const Header = () => {
-  const auths = useAuth();
-  console.log(auths.user);
-  return (
-    <div className="Header">
-      <img src={logo} alt="" />
-      <nav>
-        <a href="/shop">Shop</a>
-        <a href="/review">Order Review</a>
-        <a href="/inventory">Inventory</a>
-        {auths.user && (
-          <span style={{ color: 'yellow' }}>{auths.user.name}</span>
-        )}
-        {auths.user ? (
-          <a href="/login">{'       '} Sign Out </a>
-        ) : (
-          <a href="/login">Sign In</a>
-        )}
-      </nav>
-    </div>
-  );
-};
+class Header extends Component {
+    render() {
+        
+        return (
+            <div className="header">
+                <img
+                className="logo-img"
+                src={logo} alt=""/>
+                <ul>
+                    <li>
+                        <a href="/shop">Shop</a>
+                    </li>
+                    <li>
+                        <a href="/review">Order Review</a>
+                    </li>
+                    <li>
+                        <a href="/manage">Manage Inventory</a>
+                    </li>
+                </ul>
+            </div>
+        );
+    }
+}
 
 export default Header;
